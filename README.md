@@ -1,0 +1,2 @@
+# Detection_of_infertility_in_women_based_on_gynecological_data_using_supervised_and_unsupervised_method
+ college project
