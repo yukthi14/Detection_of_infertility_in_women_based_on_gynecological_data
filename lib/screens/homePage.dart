@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../constants/strings.dart';
 import '../constants/textStyle.dart';
+import '../functions/linearRegressionApi.dart';
+import '../models/linearModel.dart';
 import '../widgets/inputField.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +15,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String result = '';
+
+  late FocusNode ageFocus;
+  late FocusNode bmiFocus;
+  late FocusNode hbFocus;
+  late FocusNode cycleFocus;
+  late FocusNode marriageFocus;
+  late FocusNode abortionFocus;
+  late FocusNode fshFocus;
+  late FocusNode lhFocus;
+  late FocusNode thsFocus;
+  late FocusNode amhFocus;
+  late FocusNode vitFocus;
+  late FocusNode prgFocus;
+  late FocusNode sugarFocus;
+  late FocusNode bpFocus;
+  late FocusNode endFocus;
+  late FocusNode buttonFocus;
   final TextEditingController textEditingControllerAge =
       TextEditingController();
   final TextEditingController textEditingControllerBmi =
@@ -40,6 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController textEditingControllerBp = TextEditingController();
   final TextEditingController textEditingControllerEndometrium =
       TextEditingController();
+  bool isHover = false;
+  bool buttonFocused = false;
 
   int getItemCountPerRow(BuildContext context) {
     double minTileWidth = 400; //in your case
@@ -47,6 +69,27 @@ class _HomeScreenState extends State<HomeScreen> {
 
     int i = availableWidth ~/ minTileWidth;
     return i;
+  }
+
+  @override
+  void initState() {
+    ageFocus = FocusNode();
+    bmiFocus = FocusNode();
+    hbFocus = FocusNode();
+    cycleFocus = FocusNode();
+    marriageFocus = FocusNode();
+    abortionFocus = FocusNode();
+    fshFocus = FocusNode();
+    lhFocus = FocusNode();
+    thsFocus = FocusNode();
+    amhFocus = FocusNode();
+    vitFocus = FocusNode();
+    prgFocus = FocusNode();
+    sugarFocus = FocusNode();
+    bpFocus = FocusNode();
+    endFocus = FocusNode();
+    buttonFocus = FocusNode();
+    super.initState();
   }
 
   @override
@@ -90,62 +133,107 @@ class _HomeScreenState extends State<HomeScreen> {
                   InputField(
                     inputFieldName: Strings.Age,
                     textEditingController: textEditingControllerAge,
+                    fName: ageFocus,
+                    currentFocus: ageFocus,
+                    nextFocus: bmiFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.bmi,
                     textEditingController: textEditingControllerBmi,
+                    fName: bmiFocus,
+                    currentFocus: bmiFocus,
+                    nextFocus: hbFocus,
                   ),
                   InputField(
                     textEditingController: textEditingControllerHb,
                     inputFieldName: Strings.hb,
+                    fName: hbFocus,
+                    currentFocus: hbFocus,
+                    nextFocus: cycleFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.cycleLength,
                     textEditingController: textEditingControllerCycle,
+                    fName: cycleFocus,
+                    currentFocus: cycleFocus,
+                    nextFocus: marriageFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.marriageStatus,
                     textEditingController: textEditingControllerMarriage,
+                    fName: marriageFocus,
+                    currentFocus: marriageFocus,
+                    nextFocus: abortionFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.noOfAbortion,
                     textEditingController: textEditingControllerAbortion,
+                    fName: abortionFocus,
+                    currentFocus: abortionFocus,
+                    nextFocus: fshFocus,
                   ),
                   InputField(
                     textEditingController: textEditingControllerFsh,
                     inputFieldName: Strings.fsh,
+                    fName: fshFocus,
+                    currentFocus: fshFocus,
+                    nextFocus: lhFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.lh,
                     textEditingController: textEditingControllerLh,
+                    fName: lhFocus,
+                    currentFocus: lhFocus,
+                    nextFocus: thsFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.ths,
                     textEditingController: textEditingControllerThs,
+                    fName: thsFocus,
+                    currentFocus: thsFocus,
+                    nextFocus: amhFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.amh,
                     textEditingController: textEditingControllerAmh,
+                    fName: amhFocus,
+                    currentFocus: amhFocus,
+                    nextFocus: vitFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.vit,
                     textEditingController: textEditingControllerVit,
+                    fName: vitFocus,
+                    currentFocus: vitFocus,
+                    nextFocus: prgFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.prg,
                     textEditingController: textEditingControllerPrg,
+                    fName: prgFocus,
+                    currentFocus: prgFocus,
+                    nextFocus: sugarFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.sugar,
                     textEditingController: textEditingControllerSugar,
+                    fName: sugarFocus,
+                    currentFocus: sugarFocus,
+                    nextFocus: bpFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.bp,
                     textEditingController: textEditingControllerBp,
+                    fName: bpFocus,
+                    currentFocus: bpFocus,
+                    nextFocus: endFocus,
                   ),
                   InputField(
                     inputFieldName: Strings.endometrium,
                     textEditingController: textEditingControllerEndometrium,
+                    fName: endFocus,
+                    currentFocus: endFocus,
+                    nextFocus: buttonFocus,
                   )
                 ],
               ),
@@ -157,13 +245,70 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
+                  InkWell(
+                    onFocusChange: (value) {
+                      buttonFocused = value;
+                      setState(() {});
+                    },
+                    focusNode: buttonFocus,
+                    onHover: (hover) {
+                      setState(() {
+                        isHover = hover;
+                      });
+                    },
+                    onTap: () {
+                      final LinearModel linear = LinearModel(
+                        Age: textEditingControllerAge.text,
+                        bmi: textEditingControllerBmi.text,
+                        hb: textEditingControllerHb.text,
+                        cycleLength: textEditingControllerCycle.text,
+                        marriageStatus: textEditingControllerMarriage.text,
+                        noOfAbortion: textEditingControllerAbortion.text,
+                        fsh: textEditingControllerFsh.text,
+                        lh: textEditingControllerLh.text,
+                        ths: textEditingControllerThs.text,
+                        amh: textEditingControllerAmh.text,
+                        vit: textEditingControllerVit.text,
+                        prg: textEditingControllerPrg.text,
+                        sugar: textEditingControllerSugar.text,
+                        bp: textEditingControllerBp.text,
+                        endometrium: textEditingControllerEndometrium.text,
+                      );
+
+                      final LinearModel linearTest = LinearModel(
+                          Age: '28',
+                          bmi: '20.3',
+                          hb: '10.48',
+                          cycleLength: '5',
+                          marriageStatus: '20',
+                          noOfAbortion: '0',
+                          fsh: '10.95',
+                          lh: '3.67',
+                          ths: '0.68',
+                          amh: '2.07',
+                          vit: '17.1',
+                          prg: '0.57',
+                          sugar: '92',
+                          bp: '92',
+                          endometrium: '8.5');
+
+                      LinearRegression()
+                          .postLinearRegression(linear)
+                          .then((value) {
+                        result = value.toString();
+                        setState(() {});
+                      });
+                    },
                     child: Container(
                       width: w * 0.2,
                       height: h * 0.1,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: WebColors.heading),
+                          border: Border.all(
+                              color: buttonFocused
+                                  ? Colors.black
+                                  : Colors.transparent),
+                          color: isHover ? Colors.blue : WebColors.heading),
                       child: const Center(
                         child: Text("Calculate And Review"),
                       ),
@@ -177,7 +322,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(20),
                         color: WebColors.inputFieldBox),
                     child: Text(
-                      "Results",
+                      "Results:- $result",
                       style: WebTextStyle.headerTextStyle(
                         color: Colors.black,
                       ),

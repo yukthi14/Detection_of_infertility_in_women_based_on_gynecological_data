@@ -3,11 +3,18 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 
 class InputField extends StatelessWidget {
-  const InputField(
-      {super.key,
-      required this.inputFieldName,
-      required this.textEditingController});
+  const InputField({
+    super.key,
+    required this.inputFieldName,
+    required this.textEditingController,
+    required this.fName,
+    required this.currentFocus,
+    required this.nextFocus,
+  });
   final String inputFieldName;
+  final FocusNode fName;
+  final FocusNode currentFocus;
+  final FocusNode nextFocus;
   final TextEditingController textEditingController;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,13 @@ class InputField extends StatelessWidget {
               child: Text(inputFieldName),
             ),
           ),
-          TextField(
+          TextFormField(
+            autofocus: true,
+            focusNode: fName,
+            onFieldSubmitted: (value) {
+              currentFocus.unfocus();
+              FocusScope.of(context).requestFocus(nextFocus);
+            },
             decoration: InputDecoration(
               hintText: inputFieldName,
               border: OutlineInputBorder(
