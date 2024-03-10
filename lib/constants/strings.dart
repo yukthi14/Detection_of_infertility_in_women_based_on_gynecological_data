@@ -15,4 +15,12 @@ class Strings {
   static const String sugar = "Sugar";
   static const String bp = "Blood Pressure";
   static const String endometrium = "Endometrium";
+  static const String home = "Home";
+  static const String supervised = "Supervised";
+  static const String unsupervised = "Un-Supervised";
+  static const String linearRegression = "Linear Regression";
+  static const String resultText =
+      "\nThe probability of you being infertile based on the data provided:";
+  static const String projectName =
+      "Detection of infertility based on gynecological data \nusing supervised and unsupervised method.";
 }
