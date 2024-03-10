@@ -1,3 +1,5 @@
+import 'package:detection_of_infertility_in_women_based_on_gynecological_data_using_supervised_and_unsupervised_method/constants/const_sized_box.dart';
+import 'package:detection_of_infertility_in_women_based_on_gynecological_data_using_supervised_and_unsupervised_method/constants/textStyle.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
@@ -11,11 +13,13 @@ class InputField extends StatelessWidget {
     required this.currentFocus,
     required this.nextFocus,
   });
+
   final String inputFieldName;
   final FocusNode fName;
   final FocusNode currentFocus;
   final FocusNode nextFocus;
   final TextEditingController textEditingController;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,10 +35,16 @@ class InputField extends StatelessWidget {
             height: 25,
             child: Align(
               alignment: Alignment.topLeft,
-              child: Text(inputFieldName),
+              child: Text(
+                inputFieldName,
+                style:
+                    WebTextStyle.headerTextStyle(color: WebColors.background),
+              ),
             ),
           ),
+          Constants.sizedBox(height: 30),
           TextFormField(
+            style: WebTextStyle.headerTextStyle(color: WebColors.background),
             autofocus: true,
             focusNode: fName,
             onFieldSubmitted: (value) {
