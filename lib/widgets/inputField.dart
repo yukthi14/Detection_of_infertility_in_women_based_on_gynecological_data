@@ -12,8 +12,9 @@ class InputField extends StatelessWidget {
     required this.fName,
     required this.currentFocus,
     required this.nextFocus,
+    required this.example,
   });
-
+  final String example;
   final String inputFieldName;
   final FocusNode fName;
   final FocusNode currentFocus;
@@ -52,7 +53,8 @@ class InputField extends StatelessWidget {
               FocusScope.of(context).requestFocus(nextFocus);
             },
             decoration: InputDecoration(
-              hintText: inputFieldName,
+              hintText: '$inputFieldName $example',
+              hintStyle: const TextStyle(color: WebColors.background),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
