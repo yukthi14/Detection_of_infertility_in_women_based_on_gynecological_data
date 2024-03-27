@@ -54,7 +54,7 @@ class InputField extends StatelessWidget {
             },
             decoration: InputDecoration(
               hintText: '$inputFieldName $example',
-              hintStyle: const TextStyle(color: WebColors.background),
+              hintStyle: const TextStyle(color: Colors.grey),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
