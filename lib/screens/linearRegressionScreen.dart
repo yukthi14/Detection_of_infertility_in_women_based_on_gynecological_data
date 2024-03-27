@@ -149,6 +149,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: ageFocus,
                     currentFocus: ageFocus,
                     nextFocus: bmiFocus,
+                    example: '(eg: 20)',
                   ),
                   InputField(
                     inputFieldName: Strings.bmi,
@@ -156,6 +157,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: bmiFocus,
                     currentFocus: bmiFocus,
                     nextFocus: hbFocus,
+                    example: '(eg: 20.6)',
                   ),
                   InputField(
                     textEditingController: textEditingControllerHb,
@@ -163,6 +165,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: hbFocus,
                     currentFocus: hbFocus,
                     nextFocus: cycleFocus,
+                    example: '(eg: 10.4)',
                   ),
                   InputField(
                     inputFieldName: Strings.cycleLength,
@@ -170,6 +173,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: cycleFocus,
                     currentFocus: cycleFocus,
                     nextFocus: marriageFocus,
+                    example: '(eg: 5)',
                   ),
                   InputField(
                     inputFieldName: Strings.marriageStatus,
@@ -177,6 +181,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: marriageFocus,
                     currentFocus: marriageFocus,
                     nextFocus: abortionFocus,
+                    example: '(eg: 20)',
                   ),
                   InputField(
                     inputFieldName: Strings.noOfAbortion,
@@ -184,6 +189,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: abortionFocus,
                     currentFocus: abortionFocus,
                     nextFocus: fshFocus,
+                    example: '(eg: 0 or 1)',
                   ),
                   InputField(
                     textEditingController: textEditingControllerFsh,
@@ -191,6 +197,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: fshFocus,
                     currentFocus: fshFocus,
                     nextFocus: lhFocus,
+                    example: '(eg: 10.9)',
                   ),
                   InputField(
                     inputFieldName: Strings.lh,
@@ -198,6 +205,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: lhFocus,
                     currentFocus: lhFocus,
                     nextFocus: thsFocus,
+                    example: '(eg: 3.6)',
                   ),
                   InputField(
                     inputFieldName: Strings.ths,
@@ -205,6 +213,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: thsFocus,
                     currentFocus: thsFocus,
                     nextFocus: amhFocus,
+                    example: '(eg: 0.6)',
                   ),
                   InputField(
                     inputFieldName: Strings.amh,
@@ -212,6 +221,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: amhFocus,
                     currentFocus: amhFocus,
                     nextFocus: vitFocus,
+                    example: '(eg: 2.7)',
                   ),
                   InputField(
                     inputFieldName: Strings.vit,
@@ -219,6 +229,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: vitFocus,
                     currentFocus: vitFocus,
                     nextFocus: prgFocus,
+                    example: '(eg: 17.1)',
                   ),
                   InputField(
                     inputFieldName: Strings.prg,
@@ -226,6 +237,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: prgFocus,
                     currentFocus: prgFocus,
                     nextFocus: sugarFocus,
+                    example: '(eg: 0.5)',
                   ),
                   InputField(
                     inputFieldName: Strings.sugar,
@@ -233,6 +245,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: sugarFocus,
                     currentFocus: sugarFocus,
                     nextFocus: bpFocus,
+                    example: '(eg: 92)',
                   ),
                   InputField(
                     inputFieldName: Strings.bp,
@@ -240,6 +253,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: bpFocus,
                     currentFocus: bpFocus,
                     nextFocus: endFocus,
+                    example: '(eg: 85)',
                   ),
                   InputField(
                     inputFieldName: Strings.endometrium,
@@ -247,6 +261,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                     fName: endFocus,
                     currentFocus: endFocus,
                     nextFocus: buttonFocus,
+                    example: '(eg: 8.5)',
                   )
                 ],
               ),
