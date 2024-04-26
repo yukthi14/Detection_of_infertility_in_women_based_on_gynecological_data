@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/strings.dart';
 import '../constants/textStyle.dart';
-import '../functions/linearRegressionApi.dart';
+import '../functions/machine_learning_api.dart';
 import '../models/linearModel.dart';
 import '../widgets/inputField.dart';
 
