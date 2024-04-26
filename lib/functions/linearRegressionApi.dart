@@ -1,14 +1,15 @@
 import 'dart:convert';
 import 'dart:core';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/linearModel.dart';
 
 class LinearRegression {
   Future<double> postLinearRegression(LinearModel linearModel) async {
-    final String url = dotenv.get("linearRegression");
+    // final String url = dotenv.get("linearRegression");
+    const String url = 'http://127.0.0.1:5000/kmeans';
+    const String linearUrl = 'http://127.0.0.1:5000/Linear';
     try {
       http.Response response = await http.post(
         Uri.parse(
@@ -17,6 +18,7 @@ class LinearRegression {
 
       if (response.statusCode == 200) {
         var jsonResponse = json.decode(response.body);
+        print(jsonResponse);
         return jsonResponse['int_values'];
       } else {
         return 0;
