@@ -359,8 +359,8 @@ class _KMeansScreenState extends State<KMeansScreen> {
                         color: WebColors.inputFieldBox),
                     child: Text(
                       result
-                          ? "The probability of you being infertile based on the data provided: $result%"
-                          : "Waiting for calculation...",
+                          ? "You are likely to be infertile"
+                          : "You are likely to be fertile",
                       // "The probability of you being infertile based on the data provided :-$result",
                       style: WebTextStyle.headerTextStyle(
                           color: WebColors.background, fontSize: 25),
