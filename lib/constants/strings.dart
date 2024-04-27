@@ -19,6 +19,7 @@ class Strings {
   static const String supervised = "Supervised";
   static const String unsupervised = "Un-Supervised";
   static const String linearRegression = "Linear Regression";
+  static const String kMeans = "K-Means";
   static const String resultText =
       "\nThe probability of you being infertile based on the data provided:";
   static const String projectName =

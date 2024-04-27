@@ -121,7 +121,7 @@ class _KMeansScreenState extends State<KMeansScreen> {
                   child: Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      Strings.linearRegression,
+                      Strings.kMeans,
                       style: WebTextStyle.montserratStyle(
                           color: WebColors.headingTextColor, fontSize: 40),
                     ),
@@ -320,6 +320,7 @@ class _KMeansScreenState extends State<KMeansScreen> {
                       //     endometrium: '8.5');
 
                       LinearRegression().postKMeans(linear).then((value) {
+                        print(value);
                         setState(() {
                           if (value) {
                             result = 'T'; // converting to percentage
@@ -361,8 +362,8 @@ class _KMeansScreenState extends State<KMeansScreen> {
                     child: (result != '')
                         ? Text(
                             (result == 'T')
-                                ? "You are likely to be infertile"
-                                : "You are likely to be fertile",
+                                ? "You are likely to be fertile"
+                                : "You are likely to be infertile",
                             // "The probability of you being infertile based on the data provided :-$result",
                             style: WebTextStyle.headerTextStyle(
                                 color: WebColors.background, fontSize: 25),
