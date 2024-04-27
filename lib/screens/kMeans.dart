@@ -15,8 +15,7 @@ class KMeansScreen extends StatefulWidget {
 }
 
 class _KMeansScreenState extends State<KMeansScreen> {
-  // String result = '';
-  bool result = false;
+  String result = '';
   late FocusNode ageFocus;
   late FocusNode bmiFocus;
   late FocusNode hbFocus;
@@ -322,8 +321,10 @@ class _KMeansScreenState extends State<KMeansScreen> {
 
                       LinearRegression().postKMeans(linear).then((value) {
                         setState(() {
-                          if (result != value) {
-                            result = value; // converting to percentage
+                          if (value) {
+                            result = 'T'; // converting to percentage
+                          } else {
+                            result = 'F';
                           }
                         });
                       });
@@ -357,14 +358,21 @@ class _KMeansScreenState extends State<KMeansScreen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: WebColors.inputFieldBox),
-                    child: Text(
-                      result
-                          ? "You are likely to be infertile"
-                          : "You are likely to be fertile",
-                      // "The probability of you being infertile based on the data provided :-$result",
-                      style: WebTextStyle.headerTextStyle(
-                          color: WebColors.background, fontSize: 25),
-                    ),
+                    child: (result != '')
+                        ? Text(
+                            (result == 'T')
+                                ? "You are likely to be infertile"
+                                : "You are likely to be fertile",
+                            // "The probability of you being infertile based on the data provided :-$result",
+                            style: WebTextStyle.headerTextStyle(
+                                color: WebColors.background, fontSize: 25),
+                          )
+                        : Text(
+                            "Waiting for calculation...",
+                            // "The probability of you being infertile based on the data provided :-$result",
+                            style: WebTextStyle.headerTextStyle(
+                                color: WebColors.background, fontSize: 25),
+                          ),
                   )
                 ],
               ),
