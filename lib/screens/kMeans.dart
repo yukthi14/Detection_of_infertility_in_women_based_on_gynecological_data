@@ -360,13 +360,23 @@ class _KMeansScreenState extends State<KMeansScreen> {
                         borderRadius: BorderRadius.circular(20),
                         color: WebColors.inputFieldBox),
                     child: (result != '')
-                        ? Text(
-                            (result == 'T')
-                                ? "You are likely to be fertile"
-                                : "You are likely to be infertile",
-                            // "The probability of you being infertile based on the data provided :-$result",
-                            style: WebTextStyle.headerTextStyle(
-                                color: WebColors.background, fontSize: 25),
+                        ? Column(
+                            children: [
+                              Text(
+                                (result == 'T')
+                                    ? "You are likely to be fertile"
+                                    : "You are likely to be infertile",
+                                // "The probability of you being infertile based on the data provided :-$result",
+                                style: WebTextStyle.headerTextStyle(
+                                    color: WebColors.background, fontSize: 25),
+                              ),
+                              Text(
+                                "With Accuracy of 72%",
+                                // "The probability of you being infertile based on the data provided :-$result",
+                                style: WebTextStyle.headerTextStyle(
+                                    color: WebColors.background, fontSize: 25),
+                              ),
+                            ],
                           )
                         : Text(
                             "Waiting for calculation...",

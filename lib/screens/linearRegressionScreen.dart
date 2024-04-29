@@ -363,7 +363,7 @@ class _LinearRegressionScreenState extends State<LinearRegressionScreen> {
                         color: WebColors.inputFieldBox),
                     child: Text(
                       result != null
-                          ? "The probability of you being infertile based on the data provided: ${result!.toStringAsFixed(2)}%"
+                          ? "The probability of you being infertile based on the data provided: ${result!.toStringAsFixed(2)}%\n With Accuracy of 86.60%"
                           : "Waiting for calculation...",
                       // "The probability of you being infertile based on the data provided :-$result",
                       style: WebTextStyle.headerTextStyle(
